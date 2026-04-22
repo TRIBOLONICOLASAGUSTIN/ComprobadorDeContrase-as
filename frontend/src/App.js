@@ -24,8 +24,48 @@ function shuffle(text){
 }
 function buildRequirements(password){
   return[
-    {id: 'len',}
-  ]
+    {id: 'len',label: 'Minimo 8 caracterers', isValid: password.length >=8},
+    {id: 'lower',label:'Minimo una letra miniscula', isValid: /[a-z]/.test(password)},
+    {id: 'upper',label:'Minimo una letra mayuscula',isValid: /[A-Z]/.test(password)},
+    {id: 'number',label:'Minimo un numero', isValid: /[0-9]/.test(password)},
+    {id: 'symbol',label:'Minimo un simbolo', isValid: /[!@#$%^&*()~`\|}{[\]:;?><,./-=]/.test(password)}
+  ];
+}
+function evaluatePassword(password){
+  const requirements=buildRequirements(password);
+  const score = requirements.filter((item)=> item.isValid).length;
+  const total = requirements.length;
+  const percent = Math.round((score/total)*100);
+
+  return {requirements,score,total,percent};
+}
+function getStrength(score){
+  if(score<=2){
+    return{text: 'Poca segura', level: 'weak'};
+  }
+  if (score<=4){
+    return{text: 'Segura', level: 'medium'};
+  }
+  return{text: 'Muy segura', level: 'strong'};
+}
+function PasswordInput({
+  password,
+  showPassword,
+  onPasswordChange,
+  onToggleVisibility,
+  validationError,
+}){
+  return(
+    <section className="panel">
+      <h2> Escribe tu clave </h2>
+      <label htmlfor="passwordInput" className="label">
+        Contraseña
+        </label>
+      <div className="input-group">
+
+      </div>
+    </section>
+  )
 }
 function App() {
   return (
