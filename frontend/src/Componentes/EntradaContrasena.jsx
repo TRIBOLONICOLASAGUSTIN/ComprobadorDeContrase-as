@@ -17,7 +17,7 @@ function EntradaContrasena({
             <button type="button" onClick={onToggleMostrar}>
                 {mostrar ? "Ocultar": "Mostrar"}
             </button>
-            {error && <p className="No">{error}</p>}
+            {error && <p className="no">{error}</p>}
         </section>
     )
 }

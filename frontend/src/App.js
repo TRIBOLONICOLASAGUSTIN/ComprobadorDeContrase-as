@@ -1,18 +1,17 @@
-import logo from './logo.svg';
+import { useMemo, useState } from 'react';
 import './App.css';
 
 import EntradaContrasena from "./Componentes/EntradaContrasena";
 import MedidorFortaleza from "./Componentes/MedidorFortaleza";
 import Requisitos from "./Componentes/Requisitos";
-import Panel from "./Componentes/Panel";
-import PanelCopia from "./Componentes/PanelCopia";
+
 function App(){
   const[contrasena,setContrasena]=useState("");
-  const[mostar,setMostrar]=useState(false);
+  const[mostrar,setMostrar]=useState(false);
 
    const error = contrasena.trim() === "" ? "La contrasena no puede estar vacia." : "";
 
-  const requisitos= useMemo(()=>{
+  const resultado = useMemo(()=>{
     const reglas=[
       { id:"r1", texto: "Minimo 8 caracteres",ok: contrasena.length >= 8},
       { id:"r2", texto: "Incluye una mayuscula", ok: /[A-Z]/.test(contrasena)},
@@ -22,27 +21,29 @@ function App(){
     ];
     const puntos = reglas.filter((r)=> r.ok).length;
 
-    let etiquetas ="Poco segura";
-    let nuvel = "Debil";
+    let etiqueta ="Poco segura";
+    let nivel = "debil";
 
     if(puntos >=3 && puntos <=4){
-      etiquetas = "Segura";
-      nivel = "Media";
+      etiqueta = "Segura";
+      nivel = "media";
     } 
     if(puntos === 5){
-      etiquetas = "Muy segura";
-      nivel = "Fuerte";
+      etiqueta = "Muy segura";
+      nivel = "fuerte";
     }
-    return{reglas, etiquetas, nivel};
+    return{reglas, etiqueta, nivel};
   }, [contrasena]);
+
   return(
-    <main className="App">
+    <main className="app">
       <h1>Comprobador de contraseñas</h1>
       <EntradaContrasena
       contrasena={contrasena}
       mostrar={mostrar}
       onCambiarContrasena={setContrasena}
       onToggleMostrar={() => setMostrar((v)=>!v)}
+      error={error}
       />
       <MedidorFortaleza etiqueta={resultado.etiqueta} nivel={resultado.nivel} />
       <Requisitos lista={resultado.reglas}/>

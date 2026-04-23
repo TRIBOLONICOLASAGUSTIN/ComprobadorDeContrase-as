@@ -3,7 +3,7 @@ function MedidorFortaleza({etiqueta, nivel}){
         <section className="box">
             <h2>Fortaleza</h2>
             <p>
-                Estado: <span ClassName={nivel}>{etiqueta}</span>
+                Estado: <span className={nivel}>{etiqueta}</span>
             </p>
         </section>
     );
