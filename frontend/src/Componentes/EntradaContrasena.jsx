@@ -21,3 +21,4 @@ function EntradaContrasena({
         </section>
     )
 }
+export default EntradaContrasena;
