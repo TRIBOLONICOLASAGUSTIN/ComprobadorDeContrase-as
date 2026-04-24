@@ -4,10 +4,16 @@ import './App.css';
 import EntradaContrasena from "./Componentes/EntradaContrasena";
 import MedidorFortaleza from "./Componentes/MedidorFortaleza";
 import Requisitos from "./Componentes/Requisitos";
+import PanelCopia from "./Componentes/PanelCopia";
 
 function App(){
   const[contrasena,setContrasena]=useState("");
   const[mostrar,setMostrar]=useState(false);
+
+  const manejarCopiado = async () => {
+    if (!contrasena) return;
+    await navigator.clipboard.writeText(contrasena);
+  };
 
    const error = contrasena.trim() === "" ? "La contrasena no puede estar vacia." : "";
 
@@ -47,6 +53,7 @@ function App(){
       />
       <MedidorFortaleza etiqueta={resultado.etiqueta} nivel={resultado.nivel} />
       <Requisitos lista={resultado.reglas}/>
+      <PanelCopia contrasena={contrasena} onCopiar={manejarCopiado} />
     </main>
   )
 };
