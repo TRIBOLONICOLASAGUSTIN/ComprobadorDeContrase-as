@@ -6,8 +6,9 @@ Pequeño proyecto para comprobar la fortaleza o validez de una contraseña.
 
 > Ajusta esta sección según el lenguaje/archivo principal del proyecto.
 
-- Ejecuta el programa principal (por ejemplo `python main.py`, `node index.js`, etc.).
+- Ejecuta el programa principal (por ejemplo  `node index.js`, etc.).
 
 ## Estado
 
-- Repositorio inicializado; pendiente de añadir código fuente.
+- Repositorio inicializado y terminado este cuenta con 6 archivos en un lenguaje jsx destinados a la programacion del codigo y 3 packge en json 
+
