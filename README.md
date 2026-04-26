@@ -1,12 +1,11 @@
 # Comprobador de Contraseña
-
 Pequeño proyecto para comprobar la fortaleza o validez de una contraseña.
 
-## Uso
+## Usoss
 
 > Ajusta esta sección según el lenguaje/archivo principal del proyecto.
 
-- Ejecuta el programa principal (por ejemplo  `node index.js`, etc.).
+- Ejecuta el programa principal utilizando `node index.js`, etc.
 
 ## Estado
 
